@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "FileDb": {
+      "commandName": "Executable",
+      "executablePath": "D:\\Dev\\EzTools.NET\\FileDb\\trunk\\Setup\\Files\\Samples\\WinForms\\bin\\Debug\\SampleApp.exe"
+    }
+  }
+}

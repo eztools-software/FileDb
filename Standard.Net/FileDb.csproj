@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>FileDb.snk</AssemblyOriginatorKeyFile>
+    <AssemblyVersion>6.0.0.0</AssemblyVersion>
+    <FileVersion>6.0.0.0</FileVersion>
+    <PackageId>FileDb Database - Standard.NET version</PackageId>
+    <Authors>Brett Goodman</Authors>
+    <Product>FileDb .NET Database Engine</Product>
+    <Description>A portable NoSql database for .NET applications with a single table per file.  The field types are native CLR types, and arrays of the same, eg: Int32, Boolean, Byte[].  Multiple databases can be joined using LINQ.</Description>
+    <Company>EzTools Software (www.eztools-software.com)</Company>
+    <Copyright>Copyright © EzTools Software - all rights reserved</Copyright>
+    <PackageLicenseUrl>https://github.com/eztools-software/FileDb/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>http://eztools-software.com/tools/FileDb</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/eztools-software/FileDb</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <PackageTags>Database, NoSql, Linq</PackageTags>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <DelaySign>false</DelaySign>
+    <AssemblyName>FileDb.Core</AssemblyName>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>D:\Dev\EzTools.NET\FileDb\trunk\Src\Standard.Net\FileDb.Core.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\Src\DB.cs" Link="DB.cs" />
+    <Compile Include="..\Src\DB2.cs" Link="DB2.cs" />
+    <Compile Include="..\Src\Encryption.cs" Link="Encryption.cs" />
+    <Compile Include="..\Src\enums.cs" Link="enums.cs" />
+    <Compile Include="..\Src\Exception.cs" Link="Exception.cs" />
+    <Compile Include="..\Src\FileDb.cs" Link="FileDb.cs" />
+    <Compile Include="..\Src\FilterExpression.cs" Link="FilterExpression.cs" />
+    <Compile Include="..\Src\HexEncoding.cs" Link="HexEncoding.cs" />
+    <Compile Include="..\Src\Table.cs" Link="Table.cs" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+    <Version>6.1.0</Version>
+    <Authors>Brett Goodman</Authors>
+    <Company>EzTools Software</Company>
+    <Description>.NET database - single table per file with primary key index and single Blob stored at the end of file</Description>
+    <Copyright>Copyright © EzTools Software - all rights reserved</Copyright>
+    <FileVersion>6.1.0.0</FileVersion>
+    <AssemblyVersion>6.0.0.0</AssemblyVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;DEBUG;NETFX_CORE;NETSTANDARD1_6</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>TRACE;RELEASE;NETSTANDARD1_6</DefineConstants>
+    <DocumentationFile>bin\Release\netstandard1.6\FileDb.xml</DocumentationFile>
+    <NoWarn>1701;1702;1705;1591</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\Src\DB.cs" Link="DB.cs" />
+    <Compile Include="..\Src\DB2.cs" Link="DB2.cs" />
+    <Compile Include="..\Src\Encryption.cs" Link="Encryption.cs" />
+    <Compile Include="..\Src\enums.cs" Link="enums.cs" />
+    <Compile Include="..\Src\Exception.cs" Link="Exception.cs" />
+    <Compile Include="..\Src\FileDb.cs" Link="FileDb.cs" />
+    <Compile Include="..\Src\FilterExpression.cs" Link="FilterExpression.cs" />
+    <Compile Include="..\Src\HexEncoding.cs" Link="HexEncoding.cs" />
+    <Compile Include="..\Src\Table.cs" Link="Table.cs" />
+  </ItemGroup>
+
+</Project>
