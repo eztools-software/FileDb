@@ -6,7 +6,7 @@
     <AssemblyOriginatorKeyFile>FileDb.snk</AssemblyOriginatorKeyFile>
     <AssemblyVersion>6.0.0.0</AssemblyVersion>
     <FileVersion>6.0.0.0</FileVersion>
-    <PackageId>FileDb Database - Standard.NET version</PackageId>
+    <PackageId>FileDb_Database</PackageId>
     <Authors>Brett Goodman</Authors>
     <Product>FileDb .NET Database Engine</Product>
     <Description>A portable NoSql database for .NET applications with a single table per file.  The field types are native CLR types, and arrays of the same, eg: Int32, Boolean, Byte[].  Multiple databases can be joined using LINQ.</Description>
@@ -17,7 +17,7 @@
     <RepositoryUrl>https://github.com/eztools-software/FileDb</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
     <PackageTags>Database, NoSql, Linq</PackageTags>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <DelaySign>false</DelaySign>
     <AssemblyName>FileDb.Core</AssemblyName>
   </PropertyGroup>
