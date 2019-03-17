@@ -13,4 +13,4 @@ FileDb is a free to use simple NoSQL database for .NET.  The Standard.NET versio
 - FileDb is FREE to use in your applications
 - Use with LINQ to Objects to achieve full relational capability
 - Supports typed datasets, so you can use either the built-in Table or your own POCO objects (Plain Old Class Object)
-- Database Explorer tool available at http://eztools-software.com/tools/FileDb/default.asp#Explorer
+- Database Explorer tool available at http://eztools-software.com/tools/FileDb/Explorer.asp
