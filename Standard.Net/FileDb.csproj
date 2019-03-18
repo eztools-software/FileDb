@@ -7,7 +7,7 @@
     <AssemblyVersion>7.0.0.0</AssemblyVersion>
     <FileVersion>7.0.0.0</FileVersion>
     <PackageId>FileDb.Net.Core</PackageId>
-    <Authors>Brett Goodman</Authors>
+    <Authors>Brett Goodman (EzTools Software)</Authors>
     <Product>FileDb .NET Database Engine</Product>
     <Description>A portable NoSql database for .NET applications with a single table per file.  The field types are native CLR types, and arrays of the same, eg: Int32, Boolean, Byte[].  Multiple databases can be joined using LINQ.</Description>
     <Company>EzTools Software (www.eztools-software.com)</Company>
@@ -22,7 +22,7 @@
     <AssemblyName>FileDb.Core</AssemblyName>
     <PackageReleaseNotes>The DB now stores a flag indicating if the data is encrypted and throws an exception if opened without an encryptor.</PackageReleaseNotes>
     <NeutralLanguage>en-AU</NeutralLanguage>
-    <Version>7.0.0</Version>
+    <Version>7.0.1</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
