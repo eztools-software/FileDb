@@ -1,6 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.421
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileDb", "FileDb.csproj", "{7CFF3E3D-5717-45B6-ACCF-80BB1EAD9327}"
 EndProject
 Global
@@ -8,6 +10,9 @@ Global
 		Debug|Any CPU = Debug|Any CPU
 		Debug|Mixed Platforms = Debug|Mixed Platforms
 		Debug|x86 = Debug|x86
+		PCL|Any CPU = PCL|Any CPU
+		PCL|Mixed Platforms = PCL|Mixed Platforms
+		PCL|x86 = PCL|x86
 		Release|Any CPU = Release|Any CPU
 		Release|Mixed Platforms = Release|Mixed Platforms
 		Release|x86 = Release|x86
@@ -18,6 +23,12 @@ Global
 		{7CFF3E3D-5717-45B6-ACCF-80BB1EAD9327}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
 		{7CFF3E3D-5717-45B6-ACCF-80BB1EAD9327}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
 		{7CFF3E3D-5717-45B6-ACCF-80BB1EAD9327}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7CFF3E3D-5717-45B6-ACCF-80BB1EAD9327}.PCL|Any CPU.ActiveCfg = PCL|Any CPU
+		{7CFF3E3D-5717-45B6-ACCF-80BB1EAD9327}.PCL|Any CPU.Build.0 = PCL|Any CPU
+		{7CFF3E3D-5717-45B6-ACCF-80BB1EAD9327}.PCL|Mixed Platforms.ActiveCfg = PCL|Any CPU
+		{7CFF3E3D-5717-45B6-ACCF-80BB1EAD9327}.PCL|Mixed Platforms.Build.0 = PCL|Any CPU
+		{7CFF3E3D-5717-45B6-ACCF-80BB1EAD9327}.PCL|x86.ActiveCfg = PCL|x86
+		{7CFF3E3D-5717-45B6-ACCF-80BB1EAD9327}.PCL|x86.Build.0 = PCL|x86
 		{7CFF3E3D-5717-45B6-ACCF-80BB1EAD9327}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7CFF3E3D-5717-45B6-ACCF-80BB1EAD9327}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7CFF3E3D-5717-45B6-ACCF-80BB1EAD9327}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
@@ -26,5 +37,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8E1F83D7-084F-4CC9-9163-A41E7324AD9B}
 	EndGlobalSection
 EndGlobal
