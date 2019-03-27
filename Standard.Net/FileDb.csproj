@@ -19,7 +19,7 @@
     <PackageTags>FileDb Database NoSql Linq portable class library pcl xamarin android iphone mobile</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <DelaySign>false</DelaySign>
-    <AssemblyName>FileDb.Core</AssemblyName>
+    <AssemblyName>FileDb.Standard</AssemblyName>
     <PackageReleaseNotes>The DB now stores a flag indicating if the data is encrypted and throws an exception if opened without an encryptor.</PackageReleaseNotes>
     <NeutralLanguage>en-AU</NeutralLanguage>
     <Version>7.0.1</Version>
@@ -30,7 +30,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>D:\Dev\EzTools.NET\FileDb\trunk\Src\Standard.Net\FileDb.Core.xml</DocumentationFile>
+    <DocumentationFile>D:\Dev\EzTools.NET\FileDb\trunk\Src\Standard.Net\FileDb.Standard.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
