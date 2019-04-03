@@ -91,7 +91,7 @@ namespace FileDbNs
                             fieldType = field.IsArray ? typeof(UInt32[]) : typeof(UInt32);
                             break;
                         case DataTypeEnum.Int64:
-                            fieldType = field.IsArray ? typeof(Int32[]) : typeof(Int32);
+                            fieldType = field.IsArray ? typeof(Int64[]) : typeof(Int64);
                             break;
                         case DataTypeEnum.Single:
                             fieldType = field.IsArray ? typeof(Single[]) : typeof(Single);
@@ -116,7 +116,7 @@ namespace FileDbNs
                     if (prop.PropertyType != fieldType)
                     {
                         throw new Exception(string.Format("The type of Property {0} doesn't match the Field DataType - expected {1} but was {2}",
-                            prop.Name, field.DataType, prop.PropertyType));
+                            prop.Name, fieldType, prop.PropertyType));
                     }
 
                     propsMap.Add(field.Name, prop);
