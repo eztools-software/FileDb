@@ -113,7 +113,8 @@ namespace FileDbNs
                             break;
                     }
 
-                    if (prop.PropertyType != fieldType)
+                    // we use Contains rather than direct comparison because if the Property is Nullable type
+                    if (prop.PropertyType.FullName.Contains(fieldType.FullName) == false)
                     {
                         throw new Exception(string.Format("The type of Property {0} doesn't match the Field DataType - expected {1} but was {2}",
                             prop.Name, fieldType, prop.PropertyType));
