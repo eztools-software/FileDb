@@ -142,7 +142,7 @@ namespace FileDbNs
         /// Returns true if the DB was created or opened with encryption
         /// </summary>
         /// 
-        internal bool IsEncrypted { get { return _dbEngine.IsEncrypted; } }
+        public bool IsEncrypted { get { return _dbEngine.IsEncrypted; } }
 
         //----------------------------------------------------------------------------------------
         /// <summary>
