@@ -415,6 +415,11 @@ namespace FileDbNs
                         // write it to the header
                         writeDbHeader(_dataWriter);
                     }
+                    if (_numRecords > 0)
+                    {
+                        // test the encryptor to see if it works
+                        GetRecordByIndex(0, null, false);
+                    }
                 }
 
                 // NOTE: if we wanted to auto-upgrade a DB file we would call cleanup
@@ -429,7 +434,7 @@ namespace FileDbNs
                 //{
                 //}
             }
-            catch (FileDbException ex)
+            catch (Exception ex)
             {
                 Close();
                 throw ex;

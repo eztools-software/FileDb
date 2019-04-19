@@ -4,8 +4,8 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>FileDb.snk</AssemblyOriginatorKeyFile>
-    <AssemblyVersion>7.0.0.0</AssemblyVersion>
-    <FileVersion>7.0.0.0</FileVersion>
+    <AssemblyVersion>7.2.0.0</AssemblyVersion>
+    <FileVersion>7.2.0.0</FileVersion>
     <PackageId>FileDb.Standard</PackageId>
     <Authors>Brett Goodman (EzTools Software)</Authors>
     <Product>FileDb .NET Database Engine</Product>
@@ -22,7 +22,7 @@
     <AssemblyName>FileDb.Standard</AssemblyName>
     <PackageReleaseNotes>The DB now stores a flag indicating if the data is encrypted and throws an exception if opened without an encryptor.</PackageReleaseNotes>
     <NeutralLanguage>en-AU</NeutralLanguage>
-    <Version>7.0.0</Version>
+    <Version>7.2.0</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -34,14 +34,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="..\Src\AesEncryption.cs" Link="AesEncryption.cs" />
     <Compile Include="..\Src\DB.cs" Link="DB.cs" />
     <Compile Include="..\Src\DB2.cs" Link="DB2.cs" />
-    <Compile Include="..\Src\Encryption.cs" Link="Encryption.cs" />
     <Compile Include="..\Src\enums.cs" Link="enums.cs" />
     <Compile Include="..\Src\Exception.cs" Link="Exception.cs" />
     <Compile Include="..\Src\FileDb.cs" Link="FileDb.cs" />
     <Compile Include="..\Src\FilterExpression.cs" Link="FilterExpression.cs" />
     <Compile Include="..\Src\HexEncoding.cs" Link="HexEncoding.cs" />
+    <Compile Include="..\Src\RijndaelEncryption.cs" Link="RijndaelEncryption.cs" />
     <Compile Include="..\Src\Table.cs" Link="Table.cs" />
   </ItemGroup>
 

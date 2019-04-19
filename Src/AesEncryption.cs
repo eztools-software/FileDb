@@ -25,7 +25,7 @@ namespace FileDbNs
     /// class using the IEncryptor interface and set it into the FileDb object via SetEncryptor.
     /// </summary>
     /// 
-    public class Encryptor : IEncryptor
+    public class AesEncryptor : IEncryptor
     {
 #if NETSTANDARD1_6 || NETFX_CORE || PCL
         public Encryptor( string hashKey, string productKey )
@@ -51,26 +51,63 @@ namespace FileDbNs
         /// <param name="encryptionKey"></param>
         /// <param name="salt"></param>
         /// 
-        public Encryptor(string encryptionKey, string salt)
+        public AesEncryptor(string encryptionKey, string salt)
         {
             _key = GetHashKey(encryptionKey, salt);
             _encryptor = new AesManaged();
 
             // Set the key
             _encryptor.Key = _key;
+            // using the key as the IV
             _encryptor.IV = _key;
+        }
+
+        /// <summary>
+        /// Constructor taking a key (password) and salt as a string
+        /// </summary>
+        /// <param name="encryptionKey">Key</param>
+        /// <param name="salt">Salt</param>
+        /// <param name="iv">Initialization Vector</param>
+        /// 
+        public AesEncryptor(string encryptionKey, string salt, byte[] iv)
+        {
+            _key = GetHashKey(encryptionKey, salt);
+            _encryptor = new AesManaged();
+
+            // Set the key
+            _encryptor.Key = _key;
+            _encryptor.IV = iv;
         }
 
         private static byte[] GetHashKey(string hashKey, string salt)
         {
             // Initialise
             UTF8Encoding encoder = new UTF8Encoding();
+            Rfc2898DeriveBytes rfc;
+            byte[] saltBytes;
 
             // Get the salt
-            byte[] saltBytes = encoder.GetBytes(salt);
+            if (string.IsNullOrEmpty(salt))
+            {
+                // no salt
+                saltBytes = new byte[8];
+                for (int n = 0; n < 8; n++)
+                    saltBytes[n] = 0xff;
+                /*
+                // use the key to create the salt bytes by reversing the key bytes for 8 chars
+                var bytes = encoder.GetBytes(hashKey);
+                int n = 0;
+                while(n < 8)
+                {
+                    for (int i = bytes.Length - 1; i >= 0 && n < 8; i--)
+                        saltBytes[n++] = bytes[i];
+                }*/
+            }
+            else
+                saltBytes = encoder.GetBytes(salt);
 
             // Setup the hasher
-            Rfc2898DeriveBytes rfc = new Rfc2898DeriveBytes(hashKey, saltBytes);
+            rfc = new Rfc2898DeriveBytes(hashKey, saltBytes);
 
             // Return the key
             return rfc.GetBytes(16);
