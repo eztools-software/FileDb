@@ -305,11 +305,7 @@ namespace FileDbNs
             _encryptor = encryptor;
         }
 
-#if PCL || NETFX_CORE
-        internal void Open(Stream dbStream, IEncryptor encryptor)
-#else
         internal void Open(string dbFileName, Stream dbStream, IEncryptor encryptor, bool readOnly) // FolderLocEnum folderLoc )
-#endif
         {
             // Close existing databases first
             if (_isOpen)
@@ -317,31 +313,26 @@ namespace FileDbNs
 
             try
             {
-                // Open the database files
+                // Open the database file
 
                 _dbFileName = null;
 
-#if PCL || NETFX_CORE
-                if (dbStream == null)
-                {
-                    _dbStream = new MemoryStream(4096);
-                    _isReadOnly = false;
-                }
-                else
+                if (dbStream != null)
                 {
                     _isReadOnly = !dbStream.CanWrite;
                     _dbStream = dbStream;
                     _dbStream.Seek(0, SeekOrigin.Begin);
                 }
-#else
-                // allow null for memory DB
-                //if( string.IsNullOrWhitespace(dbFileName) )
-                //    throw new throw new FileDbException( FileDbException.EmptyFilename, FileDbExceptionsEnum.EmptyFilename );
-                _isReadOnly = readOnly;
-                openDbFileOrStream(dbFileName, dbStream, FileModeEnum.Open); // folderLoc );
-                _dbFileName = dbFileName;
-                //_folderLoc = folderLoc;
-#endif
+                else
+                {
+                    // allow null for memory DB
+                    //if( string.IsNullOrWhitespace(dbFileName) )
+                    //    throw new throw new FileDbException( FileDbException.EmptyFilename, FileDbExceptionsEnum.EmptyFilename );
+                    _isReadOnly = readOnly;
+                    openDbFileOrStream(dbFileName, dbStream, FileModeEnum.Open); // folderLoc );
+                    _dbFileName = dbFileName;
+                    //_folderLoc = folderLoc;
+                }
 
                 getReaderWriter();
 
@@ -861,21 +852,21 @@ namespace FileDbNs
                     if (_numRecords > 0) // Bug fix 2/8/12: was > 1
                     {
                         // Do a binary search to find the insertion position
-                        object data = null;
+                        object pkey = null;
                         if (record.ContainsKey(_primaryKey))
-                            data = record[_primaryKey];
+                            pkey = record[_primaryKey];
 
-                        if (data == null)
+                        if (pkey == null)
                             throw new FileDbException(string.Format(FileDbException.MissingPrimaryKey,
                                 _primaryKey), FileDbExceptionsEnum.MissingPrimaryKey);
 
-                        Int32 pos = bsearch(_index, 0, _index.Count - 1, data);
+                        Int32 pos = bsearch(_index, 0, _index.Count - 1, pkey);
 
                         // Ensure we don't have a duplicate key in the database
                         if (pos > 0)
                             // Oops... duplicate key
                             throw new FileDbException(string.Format(FileDbException.DuplicatePrimaryKey,
-                                _primaryKey, data.ToString()), FileDbExceptionsEnum.DuplicatePrimaryKey);
+                                _primaryKey, pkey.ToString()), FileDbExceptionsEnum.DuplicatePrimaryKey);
 
                         // Revert the result from bsearch to the proper insertion position
                         pos = (-pos) - 1;

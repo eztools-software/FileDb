@@ -449,21 +449,35 @@ namespace FileDbNs
 
         #region Open/Close/Drop/Exists
 
-#if NETFX_CORE || PCL
         //----------------------------------------------------------------------------------------
         /// <summary>
         /// Open with an existing database stream
         /// </summary>
-        /// <param name="stream">The database stream to use - normally a FileStream</param>
+        /// <param name="dbStream">The database stream to use - can be a FileStream, MemoryStream, etc.</param>
         /// 
-        public void Open(Stream stream)
+        public void Open(Stream dbStream)
         {
             lock (this)
             {
-                _dbEngine.Open(stream, null);
+                _dbEngine.Open(null, dbStream, null, !dbStream.CanWrite);
             }
         }
-#else
+
+        //----------------------------------------------------------------------------------------
+        /// <summary>
+        /// Open with an existing database stream
+        /// </summary>
+        /// <param name="dbStream">The database stream to use - can be a FileStream, MemoryStream, etc.</param>
+        /// <param name="encryptor">The encryption provider or null if no encryption is to be used</param>
+        /// 
+        public void Open(Stream dbStream, IEncryptor encryptor)
+        {
+            lock (this)
+            {
+                _dbEngine.Open(null, dbStream, encryptor, !dbStream.CanWrite);
+            }
+        }
+
         //----------------------------------------------------------------------------------------
         /// <summary>
         /// Open the indicated database file in read-write mode.
@@ -535,7 +549,6 @@ namespace FileDbNs
                 _dbEngine.Open(dbFileName, null, encryptor, readOnly);
             }
         }
-#endif
 
         //----------------------------------------------------------------------------------------
         /// <summary>

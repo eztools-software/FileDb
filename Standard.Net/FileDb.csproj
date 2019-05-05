@@ -4,25 +4,25 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>FileDb.snk</AssemblyOriginatorKeyFile>
-    <AssemblyVersion>7.2.0.0</AssemblyVersion>
-    <FileVersion>7.2.0.0</FileVersion>
+    <AssemblyVersion>7.3.0.0</AssemblyVersion>
+    <FileVersion>7.3.0.0</FileVersion>
     <PackageId>FileDb.Standard</PackageId>
     <Authors>Brett Goodman (EzTools Software)</Authors>
     <Product>FileDb .NET Database Engine</Product>
     <Description>A portable NoSql database for .NET applications with a single table per file.  The field types are native CLR types, and arrays of the same, eg: Int32, Boolean, Byte[].  Multiple databases can be joined using LINQ.</Description>
     <Company>EzTools Software (www.eztools-software.com)</Company>
     <Copyright>Copyright © EzTools Software - all rights reserved</Copyright>
-    <PackageLicenseUrl>https://github.com/eztools-software/FileDb/blob/master/LICENSE</PackageLicenseUrl>
-    <PackageProjectUrl>http://eztools-software.com/tools/FileDb</PackageProjectUrl>
+    <PackageLicenseUrl></PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/eztools-software/FileDb</PackageProjectUrl>
     <RepositoryUrl>https://github.com/eztools-software/FileDb</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
     <PackageTags>FileDb Database NoSql Linq portable class library pcl xamarin android iphone mobile</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <DelaySign>false</DelaySign>
     <AssemblyName>FileDb.Standard</AssemblyName>
-    <PackageReleaseNotes>The DB now stores a flag indicating if the data is encrypted and throws an exception if opened without an encryptor.</PackageReleaseNotes>
+    <PackageReleaseNotes>Added constructor that takes a Stream instead of a filename</PackageReleaseNotes>
     <NeutralLanguage>en-AU</NeutralLanguage>
-    <Version>7.2.0</Version>
+    <Version>7.3.0</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
