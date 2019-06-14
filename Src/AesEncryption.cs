@@ -106,8 +106,6 @@ namespace FileDbNs
         void init(string encryptionKey, byte[] saltBytes, byte[] iv)
         {
             var key = GetHashKey(encryptionKey, saltBytes);
-            //if (iv == null) // use the key as the IV -- don't force using IV - maybe they don't want it
-            //    iv = key;
 
             createEncryptor(encryptionKey, key, iv);
         }
@@ -118,7 +116,10 @@ namespace FileDbNs
 
             // Set the key
             _encryptor.Key = key;
-            _encryptor.IV = iv;
+            if(iv != null)
+                _encryptor.IV = iv;
+            else
+                _encryptor.IV = key; // must use the same IV
         }
 
         static byte[] GetDefaultSalt(string hashKey)
