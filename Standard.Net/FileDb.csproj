@@ -12,7 +12,7 @@
     <Description>A portable NoSql database for .NET applications with a single table per file.  The field types are native CLR types, and arrays of the same, eg: Int32, Boolean, Byte[].  Multiple databases can be joined using LINQ.</Description>
     <Company>EzTools Software (www.eztools-software.com)</Company>
     <Copyright>Copyright © EzTools Software - all rights reserved</Copyright>
-    <PackageLicenseUrl></PackageLicenseUrl>
+    <PackageLicenseUrl>https://github.com/eztools-software/FileDb/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/eztools-software/FileDb</PackageProjectUrl>
     <RepositoryUrl>https://github.com/eztools-software/FileDb</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
