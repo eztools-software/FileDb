@@ -22,7 +22,7 @@
     <AssemblyName>FileDb.Standard</AssemblyName>
     <PackageReleaseNotes>Added constructor that takes a Stream instead of a filename</PackageReleaseNotes>
     <NeutralLanguage>en-AU</NeutralLanguage>
-    <Version>7.3.0</Version>
+    <Version>7.4.0</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
