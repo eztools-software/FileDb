@@ -4,8 +4,8 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>FileDb.snk</AssemblyOriginatorKeyFile>
-    <AssemblyVersion>7.3.0.0</AssemblyVersion>
-    <FileVersion>7.3.0.0</FileVersion>
+    <AssemblyVersion>7.4.0.0</AssemblyVersion>
+    <FileVersion>7.4.0.0</FileVersion>
     <PackageId>FileDb.Standard</PackageId>
     <Authors>Brett Goodman (EzTools Software)</Authors>
     <Product>FileDb .NET Database Engine</Product>

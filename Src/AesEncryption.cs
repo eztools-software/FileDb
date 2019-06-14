@@ -42,73 +42,98 @@ namespace FileDbNs
             return encryptedData;
         }
 #else
-        byte[] _key;
+        //byte[] _key;
         AesManaged _encryptor;
 
         /// <summary>
         /// Constructor taking a key (password) and salt as a string
         /// </summary>
-        /// <param name="encryptionKey"></param>
-        /// <param name="salt"></param>
+        /// <param name="encryptionKey">The password</param>
+        /// <param name="salt">Salt</param>
         /// 
         public AesEncryptor(string encryptionKey, string salt)
         {
-            _key = GetHashKey(encryptionKey, salt);
-            _encryptor = new AesManaged();
+            init(encryptionKey, salt, null);
+        }
 
-            // Set the key
-            _encryptor.Key = _key;
-            // using the key as the IV
-            _encryptor.IV = _key;
+        /// <summary>
+        /// Constructor taking a key (password) and salt as a byte[]
+        /// </summary>
+        /// <param name="encryptionKey">The password</param>
+        /// <param name="salt">Salt</param>
+        /// 
+        public AesEncryptor(string encryptionKey, byte[] salt)
+        {
+            init(encryptionKey, salt, null);
         }
 
         /// <summary>
         /// Constructor taking a key (password) and salt as a string
         /// </summary>
-        /// <param name="encryptionKey">Key</param>
+        /// <param name="encryptionKey">The password</param>
         /// <param name="salt">Salt</param>
         /// <param name="iv">Initialization Vector</param>
         /// 
         public AesEncryptor(string encryptionKey, string salt, byte[] iv)
         {
-            _key = GetHashKey(encryptionKey, salt);
+            init(encryptionKey, salt, iv);
+        }
+
+        /// <summary>
+        /// Constructor taking a key (password) and salt as a byte[]
+        /// </summary>
+        /// <param name="encryptionKey">The password</param>
+        /// <param name="salt">Salt</param>
+        /// <param name="iv">Initialization Vector</param>
+        /// 
+        public AesEncryptor(string encryptionKey, byte[] salt, byte[] iv)
+        {
+            init(encryptionKey, salt, iv);
+        }
+
+        void init(string encryptionKey, string salt, byte[] iv)
+        {
+            // Get the salt
+            byte[] saltBytes;
+            if (string.IsNullOrEmpty(salt))
+                saltBytes = GetDefaultSalt(encryptionKey);
+            else
+                saltBytes = Encoding.UTF8.GetBytes(salt);
+
+            init(encryptionKey, saltBytes, iv);
+        }
+
+        void init(string encryptionKey, byte[] saltBytes, byte[] iv)
+        {
+            var key = GetHashKey(encryptionKey, saltBytes);
+            //if (iv == null) // use the key as the IV -- don't force using IV - maybe they don't want it
+            //    iv = key;
+
+            createEncryptor(encryptionKey, key, iv);
+        }
+
+        void createEncryptor(string encryptionKey, byte[] key, byte[] iv)
+        {
             _encryptor = new AesManaged();
 
             // Set the key
-            _encryptor.Key = _key;
+            _encryptor.Key = key;
             _encryptor.IV = iv;
         }
 
-        private static byte[] GetHashKey(string hashKey, string salt)
+        static byte[] GetDefaultSalt(string hashKey)
         {
-            // Initialise
-            UTF8Encoding encoder = new UTF8Encoding();
-            Rfc2898DeriveBytes rfc;
-            byte[] saltBytes;
+            // gen for no salt
+            var saltBytes = new byte[8];
+            for (int n = 0; n < 8; n++)
+                saltBytes[n] = 0xff;
+            return saltBytes;
+        }
 
-            // Get the salt
-            if (string.IsNullOrEmpty(salt))
-            {
-                // no salt
-                saltBytes = new byte[8];
-                for (int n = 0; n < 8; n++)
-                    saltBytes[n] = 0xff;
-                /*
-                // use the key to create the salt bytes by reversing the key bytes for 8 chars
-                var bytes = encoder.GetBytes(hashKey);
-                int n = 0;
-                while(n < 8)
-                {
-                    for (int i = bytes.Length - 1; i >= 0 && n < 8; i--)
-                        saltBytes[n++] = bytes[i];
-                }*/
-            }
-            else
-                saltBytes = encoder.GetBytes(salt);
-
+        static byte[] GetHashKey(string hashKey, byte[] saltBytes)
+        {
             // Setup the hasher
-            rfc = new Rfc2898DeriveBytes(hashKey, saltBytes);
-
+            var rfc = new Rfc2898DeriveBytes(hashKey, saltBytes);
             // Return the key
             return rfc.GetBytes(16);
         }

@@ -14,28 +14,53 @@ namespace FileDbNs
         /// <summary>
         /// Constructor taking a key (password) and salt as a string
         /// </summary>
-        /// <param name="encryptionKey"></param>
-        /// <param name="salt"></param>
+        /// <param name="encryptionKey">The password</param>
+        /// <param name="salt">Salt</param>
         /// 
         public RijndaelEncryptor(string encryptionKey, string salt)
         {
-            _encryptor = Rijndael.Create();
-            PasswordDeriveBytes pdb = new PasswordDeriveBytes(encryptionKey, getSaltBytes(salt));
-            _encryptor.Key = pdb.GetBytes(32);
-            _encryptor.IV = pdb.GetBytes(16);
+            init(encryptionKey, getSaltBytes(salt), null);
+        }
+
+        /// <summary>
+        /// Constructor taking a key (password) and salt as byte[]
+        /// </summary>
+        /// <param name="encryptionKey">The password</param>
+        /// <param name="salt">Salt</param>
+        /// 
+        public RijndaelEncryptor(string encryptionKey, byte[] salt)
+        {
+            init(encryptionKey, salt, null);
         }
 
         /// <summary>
         /// Constructor taking a key (password) and salt as a string
         /// </summary>
-        /// <param name="encryptionKey">Key</param>
+        /// <param name="encryptionKey">The password</param>
         /// <param name="salt">Salt</param>
         /// <param name="iv">Initialization Vector</param>
         /// 
         public RijndaelEncryptor(string encryptionKey, string salt, byte[] iv)
         {
+            init(encryptionKey, getSaltBytes(salt), iv);
+        }
+
+        /// <summary>
+        /// Constructor taking a key (password) and salt as a byte[]
+        /// </summary>
+        /// <param name="encryptionKey">The password</param>
+        /// <param name="salt">Salt</param>
+        /// <param name="iv">Initialization Vector</param>
+        /// 
+        public RijndaelEncryptor(string encryptionKey, byte[] salt, byte[] iv)
+        {
+            init(encryptionKey, salt, iv);
+        }
+
+        void init(string encryptionKey, byte[] salt, byte[] iv)
+        {
             _encryptor = Rijndael.Create();
-            PasswordDeriveBytes pdb = new PasswordDeriveBytes(encryptionKey, getSaltBytes(salt));
+            PasswordDeriveBytes pdb = new PasswordDeriveBytes(encryptionKey, salt);
             _encryptor.Key = pdb.GetBytes(32);
             _encryptor.IV = iv;
         }
