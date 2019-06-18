@@ -425,10 +425,13 @@ namespace FileDbNs
                 //{
                 //}
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
                 Close();
-                throw ex;
+                if (e is System.Security.Cryptography.CryptographicException)
+                    throw new FileDbException(FileDbException.CryptographicException, FileDbExceptionsEnum.CryptographicException, e);
+                else
+                    throw;
             }
         }
 

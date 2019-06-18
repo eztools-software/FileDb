@@ -50,7 +50,8 @@ namespace FileDbNs
         NoCurrentTransaction,
         NoEncryptor,
         DbSchemaIsUpToDate,
-        DbIsEncrypted
+        DbIsEncrypted,
+        CryptographicException
     }
 
     // This exception is raised whenever a statement cannot be compiled.
@@ -150,6 +151,8 @@ namespace FileDbNs
         internal const string DbSchemaIsUpToDate = "The database schema is already up to date";
 
         internal const string DbIsEncrypted = "This database is encrypted but no Encryptor was provided";
+
+        internal const string CryptographicException = "Cryptographic exception - likely cause is bad password";
 
         #endregion Strings
 
