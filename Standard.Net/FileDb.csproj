@@ -1,11 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>FileDb.snk</AssemblyOriginatorKeyFile>
-    <AssemblyVersion>7.4.2.0</AssemblyVersion>
-    <FileVersion>7.4.2.0</FileVersion>
+    <AssemblyVersion>7.4.3.0</AssemblyVersion>
+    <FileVersion>7.4.3.0</FileVersion>
     <PackageId>FileDb.Standard</PackageId>
     <Authors>Brett Goodman (EzTools Software)</Authors>
     <Product>FileDb .NET Database Engine</Product>
@@ -22,7 +22,7 @@
     <AssemblyName>FileDb.Standard</AssemblyName>
     <PackageReleaseNotes>Added constructor that takes a Stream instead of a filename</PackageReleaseNotes>
     <NeutralLanguage>en-AU</NeutralLanguage>
-    <Version>7.4.2</Version>
+    <Version>7.4.3</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

@@ -555,6 +555,9 @@ namespace FileDbNs
                                 // Expression completed
                                 searchVal = sbTemp.ToString();
                                 sbTemp.Length = 0;
+                                // BG: Fix added 24-6-19
+                                if (string.Compare((string) searchVal, "null", StringComparison.OrdinalIgnoreCase) == 0)
+                                    searchVal = null;
                                 var srchExp = new FilterExpression(fieldName, searchVal, comparisonOp, matchType, isNot);
                                 parentSrchExpGrp.Add(curBoolOp, srchExp);
                                 if (filter[pos] == ')')
