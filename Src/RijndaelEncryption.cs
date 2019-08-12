@@ -62,6 +62,8 @@ namespace FileDbNs
             _encryptor = Rijndael.Create();
             PasswordDeriveBytes pdb = new PasswordDeriveBytes(encryptionKey, salt);
             _encryptor.Key = pdb.GetBytes(32);
+            if(iv == null)
+                iv = pdb.GetBytes(16);
             _encryptor.IV = iv;
         }
 
