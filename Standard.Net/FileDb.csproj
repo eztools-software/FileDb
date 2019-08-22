@@ -4,8 +4,8 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>FileDb.snk</AssemblyOriginatorKeyFile>
-    <AssemblyVersion>7.4.4.0</AssemblyVersion>
-    <FileVersion>7.4.4.0</FileVersion>
+    <AssemblyVersion>7.4.5.0</AssemblyVersion>
+    <FileVersion>7.4.5.0</FileVersion>
     <PackageId>FileDb.Standard</PackageId>
     <Authors>Brett Goodman (EzTools Software)</Authors>
     <Product>FileDb .NET Database Engine</Product>
@@ -20,9 +20,9 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <DelaySign>false</DelaySign>
     <AssemblyName>FileDb.Standard</AssemblyName>
-    <PackageReleaseNotes>Added constructor that takes a Stream instead of a filename</PackageReleaseNotes>
+    <PackageReleaseNotes>Fix for when searching for/with null values.  eg. this would not work before: where FirstName &lt;&gt; null (&lt;&gt; or != both mean NOT EQUAL)</PackageReleaseNotes>
     <NeutralLanguage>en-AU</NeutralLanguage>
-    <Version>7.4.4</Version>
+    <Version>7.4.5</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
