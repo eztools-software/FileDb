@@ -2403,15 +2403,14 @@ namespace FileDbNs
 
             bool isMatch = false;
 
-            if (val == null && searchExp.SearchVal == null) // both null - maybe not possible?
-                return true;
+            if (val == null && searchExp.SearchVal == null) // both null so they are equal
+                isMatch = true;
 
-            else if (val == null || searchExp.SearchVal == null) // only 1 is null
-                return false;
+            else if (val == null || searchExp.SearchVal == null) // only 1 is null so they can't be equal
+                isMatch = false;
 
             // neither null
-
-            if (searchExp.Equality == ComparisonOperatorEnum.Contains)
+            else if (searchExp.Equality == ComparisonOperatorEnum.Contains)
             {
                 // hopefully searching for strings
 
